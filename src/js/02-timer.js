@@ -27,7 +27,7 @@ const options = {
       console.log(selectedDates[0]);
 
       if (checkValidDate(selectedDates[0].getTime())) {
-        refs.startTimerBtn.disabled = false;
+        refs.startTimerBtn.disabled = false; // disabled - відключає кнопку
       } else {
         Notify.failure('Please choose a date in the future');
         refs.startTimerBtn.disabled = true;
@@ -48,13 +48,14 @@ const options = {
 
   let inputDate;
 
-  refs.startTimerBtn.disabled = true;
+  refs.startTimerBtn.disabled = false;// Кнопка Start на початку активна
 refs.startTimerBtn.addEventListener('click', handleCountdownTimer);
 
 flatpickr(refs.selector, options);
 
 function handleCountdownTimer(evt) {
   evt.preventDefault();
+  refs.startTimerBtn.disabled = true;// кнопка Start після її запуску неактивна
 
   const coundownId = setInterval(() => {
     const countdownTime = checkValidDate(inputDate);

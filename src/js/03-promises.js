@@ -39,7 +39,7 @@ function btnCreatePromises(evt) {
   const delay = Number.parseInt(data.get('delay'));
   const step = Number.parseInt(data.get('step'));
 
-  for (let i = 0; i < amount; i += 1) {
+  for (let i = 1; i < amount; i += 1) {
     createPromise(i, delay + i * step)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
